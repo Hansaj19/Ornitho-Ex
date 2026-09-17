@@ -1,0 +1,174 @@
+167.7s	2591	07:14:35 [INFO]   Lullula arborea: 100 available -> keeping 100 (A:100, B:0)
+168.3s	2592	
+168.3s	2593	============================================================
+168.3s	2594	PHASE 1A QUERY SUMMARY
+168.3s	2595	============================================================
+168.3s	2596	  Species queried:     71
+168.3s	2597	  Species accepted:    71
+168.3s	2598	  Species skipped:     0
+168.3s	2599	  Total clips to DL:   7100
+168.3s	2600	
+168.3s	2601	 Query results saved -> /kaggle/working/xc_query_results.json
+168.3s	2602	   Review the skipped species above before proceeding to the download cell.
+168.3s	2603	Downloading 7100 audio clips to /kaggle/working/raw_audio/xenocanto ...
+168.3s	2604	(Idempotent — safe to re-run if interrupted)
+168.3s	2605	
+6306.6s	2606	OSError: [Errno 28] No space left on device
+6306.7s	2607	
+6306.7s	2608	During handling of the above exception, another exception occurred:
+6306.7s	2609	
+6306.7s	2610	Traceback (most recent call last):
+6306.7s	2611	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 371, in execute_notebook
+6306.7s	2612	    cls.execute_managed_notebook(nb_man, kernel_name, log_output=log_output, **kwargs)
+6306.7s	2613	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 443, in execute_managed_notebook
+6306.7s	2614	    return PapermillNotebookClient(nb_man, **final_kwargs).execute()
+6306.7s	2615	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2616	  File "/usr/local/lib/python3.12/dist-packages/papermill/clientwrap.py", line 45, in execute
+6306.7s	2617	    self.papermill_execute_cells()
+6306.7s	2618	  File "/usr/local/lib/python3.12/dist-packages/papermill/clientwrap.py", line 77, in papermill_execute_cells
+6306.7s	2619	    self.nb_man.cell_complete(self.nb.cells[index], cell_index=index)
+6306.7s	2620	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 77, in wrapper
+6306.7s	2621	    return func(self, *args, **kwargs)
+6306.7s	2622	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2623	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 274, in cell_complete
+6306.7s	2624	    self.save()
+6306.7s	2625	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 77, in wrapper
+6306.7s	2626	    return func(self, *args, **kwargs)
+6306.7s	2627	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2628	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 153, in save
+6306.7s	2629	    write_ipynb(self.nb, self.output_path)
+6306.7s	2630	  File "/usr/local/lib/python3.12/dist-packages/papermill/iorw.py", line 486, in write_ipynb
+6306.7s	2631	    papermill_io.write(nbformat.writes(nb), path)
+6306.7s	2632	  File "/usr/local/lib/python3.12/dist-packages/papermill/iorw.py", line 102, in write
+6306.7s	2633	    return self.get_handler(path, extensions).write(buf, path)
+6306.7s	2634	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2635	  File "/usr/local/lib/python3.12/dist-packages/papermill/iorw.py", line 214, in write
+6306.7s	2636	    with open(path, 'w', encoding="utf-8") as f:
+6306.7s	2637	         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2638	OSError: [Errno 28] No space left on device
+6306.7s	2639	
+6306.7s	2640	During handling of the above exception, another exception occurred:
+6306.7s	2641	
+6306.7s	2642	OSError: [Errno 28] No space left on device
+6306.7s	2643	
+6306.7s	2644	During handling of the above exception, another exception occurred:
+6306.7s	2645	
+6306.7s	2646	Traceback (most recent call last):
+6306.7s	2647	  File "<string>", line 1, in <module>
+6306.7s	2648	  File "/usr/local/lib/python3.12/dist-packages/papermill/execute.py", line 116, in execute_notebook
+6306.7s	2649	    nb = papermill_engines.execute_notebook_with_engine(
+6306.7s	2650	         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2651	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 49, in execute_notebook_with_engine
+6306.7s	2652	    return self.get_engine(engine_name).execute_notebook(nb, kernel_name, **kwargs)
+6306.7s	2653	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2654	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 374, in execute_notebook
+6306.7s	2655	    nb_man.notebook_complete()
+6306.7s	2656	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 77, in wrapper
+6306.7s	2657	    return func(self, *args, **kwargs)
+6306.7s	2658	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2659	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 302, in notebook_complete
+6306.7s	2660	    self.save()
+6306.7s	2661	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 77, in wrapper
+6306.7s	2662	    return func(self, *args, **kwargs)
+6306.7s	2663	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2664	  File "/usr/local/lib/python3.12/dist-packages/papermill/engines.py", line 153, in save
+6306.7s	2665	    write_ipynb(self.nb, self.output_path)
+6306.7s	2666	  File "/usr/local/lib/python3.12/dist-packages/papermill/iorw.py", line 486, in write_ipynb
+6306.7s	2667	    papermill_io.write(nbformat.writes(nb), path)
+6306.7s	2668	  File "/usr/local/lib/python3.12/dist-packages/papermill/iorw.py", line 102, in write
+6306.7s	2669	    return self.get_handler(path, extensions).write(buf, path)
+6306.7s	2670	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2671	  File "/usr/local/lib/python3.12/dist-packages/papermill/iorw.py", line 214, in write
+6306.7s	2672	    with open(path, 'w', encoding="utf-8") as f:
+6306.7s	2673	         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6306.7s	2674	OSError: [Errno 28] No space left on device
+6307.7s	2675	/bin/sh: 1: echo: echo: I/O error
+6310.8s	2676	/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+6310.8s	2677	  cells[i][c] = re.sub('\\\\\|', '|', cell)
+6311.2s	2678	/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+6311.2s	2679	  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+6312.6s	2680	Traceback (most recent call last):
+6312.6s	2681	  File "/usr/local/lib/python3.12/dist-packages/traitlets/utils/importstring.py", line 35, in import_item
+6312.6s	2682	    pak = getattr(module, obj)
+6312.6s	2683	          ^^^^^^^^^^^^^^^^^^^^
+6312.6s	2684	AttributeError: module 'remove_papermill_header' has no attribute 'RemovePapermillHeader'
+6312.6s	2685	
+6312.6s	2686	The above exception was the direct cause of the following exception:
+6312.6s	2687	
+6312.6s	2688	Traceback (most recent call last):
+6312.6s	2689	  File "/usr/local/bin/jupyter-nbconvert", line 10, in <module>
+6312.6s	2690	    sys.exit(main())
+6312.6s	2691	             ^^^^^^
+6312.6s	2692	  File "/usr/local/lib/python3.12/dist-packages/jupyter_core/application.py", line 284, in launch_instance
+6312.6s	2693	    super().launch_instance(argv=argv, **kwargs)
+6312.6s	2694	  File "/usr/local/lib/python3.12/dist-packages/traitlets/config/application.py", line 1082, in launch_instance
+6312.6s	2695	    app.start()
+6312.6s	2696	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/nbconvertapp.py", line 369, in start
+6312.6s	2697	    self.convert_notebooks()
+6312.6s	2698	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/nbconvertapp.py", line 536, in convert_notebooks
+6312.6s	2699	    self.exporter = cls(config=self.config)
+6312.6s	2700	                    ^^^^^^^^^^^^^^^^^^^^^^^
+6312.6s	2701	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/exporters/exporter.py", line 118, in __init__
+6312.6s	2702	    self._init_preprocessors()
+6312.6s	2703	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/exporters/exporter.py", line 275, in _init_preprocessors
+6312.6s	2704	    self.register_preprocessor(preprocessor, enabled=True)
+6312.6s	2705	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/exporters/exporter.py", line 236, in register_preprocessor
+6312.6s	2706	    preprocessor_cls = import_item(preprocessor)
+6312.6s	2707	                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+6312.6s	2708	  File "/usr/local/lib/python3.12/dist-packages/traitlets/utils/importstring.py", line 37, in import_item
+6312.6s	2709	    raise ImportError("No module named %s" % obj) from e
+6312.6s	2710	ImportError: No module named RemovePapermillHeader
+6316.7s	2711	[NbConvertApp] Converting notebook __notebook__.ipynb to html
+6316.7s	2712	Traceback (most recent call last):
+6316.7s	2713	  File "/usr/local/lib/python3.12/dist-packages/nbformat/reader.py", line 19, in parse_json
+6316.7s	2714	    nb_dict = json.loads(s, **kwargs)
+6316.7s	2715	              ^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2716	  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+6316.7s	2717	    return _default_decoder.decode(s)
+6316.7s	2718	           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2719	  File "/usr/lib/python3.12/json/decoder.py", line 338, in decode
+6316.7s	2720	    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+6316.7s	2721	               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2722	  File "/usr/lib/python3.12/json/decoder.py", line 354, in raw_decode
+6316.7s	2723	    obj, end = self.scan_once(s, idx)
+6316.7s	2724	               ^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2725	json.decoder.JSONDecodeError: Unterminated string starting at: line 3988 column 5 (char 343671)
+6316.7s	2726	
+6316.7s	2727	The above exception was the direct cause of the following exception:
+6316.7s	2728	
+6316.7s	2729	Traceback (most recent call last):
+6316.7s	2730	  File "/usr/local/bin/jupyter-nbconvert", line 10, in <module>
+6316.7s	2731	    sys.exit(main())
+6316.7s	2732	             ^^^^^^
+6316.7s	2733	  File "/usr/local/lib/python3.12/dist-packages/jupyter_core/application.py", line 284, in launch_instance
+6316.7s	2734	    super().launch_instance(argv=argv, **kwargs)
+6316.7s	2735	  File "/usr/local/lib/python3.12/dist-packages/traitlets/config/application.py", line 1082, in launch_instance
+6316.7s	2736	    app.start()
+6316.7s	2737	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/nbconvertapp.py", line 369, in start
+6316.7s	2738	    self.convert_notebooks()
+6316.7s	2739	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/nbconvertapp.py", line 541, in convert_notebooks
+6316.7s	2740	    self.convert_single_notebook(notebook_filename)
+6316.7s	2741	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/nbconvertapp.py", line 506, in convert_single_notebook
+6316.7s	2742	    output, resources = self.export_single_notebook(notebook_filename, resources, input_buffer=input_buffer)
+6316.7s	2743	                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2744	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/nbconvertapp.py", line 435, in export_single_notebook
+6316.7s	2745	    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+6316.7s	2746	                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2747	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/exporters/exporter.py", line 190, in from_filename
+6316.7s	2748	    return self.from_file(f, resources=resources, **kw)
+6316.7s	2749	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2750	  File "/usr/local/lib/python3.12/dist-packages/nbconvert/exporters/exporter.py", line 208, in from_file
+6316.7s	2751	    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+6316.7s	2752	                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2753	  File "/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py", line 174, in read
+6316.7s	2754	    return reads(buf, as_version, capture_validation_error, **kwargs)
+6316.7s	2755	           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2756	  File "/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py", line 92, in reads
+6316.7s	2757	    nb = reader.reads(s, **kwargs)
+6316.7s	2758	         ^^^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2759	  File "/usr/local/lib/python3.12/dist-packages/nbformat/reader.py", line 75, in reads
+6316.7s	2760	    nb_dict = parse_json(s, **kwargs)
+6316.7s	2761	              ^^^^^^^^^^^^^^^^^^^^^^^
+6316.7s	2762	  File "/usr/local/lib/python3.12/dist-packages/nbformat/reader.py", line 25, in parse_json
+6316.7s	2763	    raise NotJSONError(message) from e
+6316.7s	2764	nbformat.reader.NotJSONError: Notebook does not appear to be JSON: '{\n "cells": [\n  {\n   "cell_type": "c...
