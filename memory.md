@@ -1,7 +1,7 @@
 # 🧠 Ornitho-Ex: Agent Memory & Project Preferences
 
 > **Purpose:** Quick-handover document for any new LLM agent taking over this project. Contains owner preferences, project context, standing rules, and current status. **Must be kept up-to-date at every session.**
-> **Last Updated:** 2026-08-18 (v3 — Kaggle workflow integrated)
+> **Last Updated:** 2026-09-17 (v4 — BirdCLEF 2021 pivot implemented)
 
 ---
 
@@ -47,7 +47,7 @@ e:\Ornitho-Ex\
 
 | Notebook | Name | GPU | Purpose |
 |---|---|---|---|
-| 1 | `bird-xai-preprocessing` | OFF | Xeno-canto API download, preprocessing, feature extraction |
+| 1 | `bird-xai-preprocessing` | OFF | BirdCLEF 2021 local feature extraction + NIPS4Bplus cutting |
 | 2 | `bird-xai-training` | ON | Train CBM + black-box baseline, full lambda sweep |
 | 3 | `bird-xai-evaluation` | ON (light) | Grad-CAM, faithfulness metrics, results plots |
 
@@ -69,7 +69,7 @@ Build a **Concept Bottleneck Model (CBM)** for bird species classification from 
 **Core novelty:** Concept targets are **programmatically extracted** (not manually labeled). The **λ sweep** (joint loss weight) quantifies the accuracy-vs-interpretability tradeoff.
 
 **Datasets:**
-- **Xeno-canto** → Training (broad, 50–100+ species)
+- **BirdCLEF 2021** (Kaggle) → Training (European focus, ~70 species, rating ≥ 3.5)
 - **NIPS4Bplus** → Faithfulness validation only (51 European species, timestamped)
 
 ---
@@ -99,25 +99,34 @@ Audio → Log-mel spectrogram → EfficientNet-B0 → ConceptBottleneck head →
 
 ## ✅ Current Status
 
-**Phase:** 0 — Initialization (plan v3 synced with Kaggle workflow)  
+**Phase:** 1 — Preprocessing (BirdCLEF 2021 pivot complete, ready for Kaggle execution)  
 **What's Done:**
 - Project brief analyzed (v1, v2, and Kaggle workflow guidelines doc)
-- Implementation plan created and updated to v3 (`implementation_plan.md`)
-- `trace.md` updated with all decisions including Kaggle workflow
-- `memory.md` updated with Kaggle execution environment section (this file)
+- Implementation plan created and updated (v3 → v4)
+- `trace.md`, `memory.md` kept up-to-date
+- **Pivoted Notebook 1** from Xeno-canto REST API to BirdCLEF 2021 Kaggle dataset
+  - `src/config/species_config.py` — BirdCLEF path constants, taxonomy map, feature params
+  - `notebooks/phase1_bird_xai_preprocessing.py` — full overhaul; no network calls
+  - Segmentation: 4.0 s windows at 32 kHz → (128, 250) log-mel + 6 concept targets
+  - Output: compressed `.npz` in `/kaggle/working/processed_features/` (~500 MB expected)
 
 **What's Next:**
-- Phase 0: Set up local code structure, requirements.txt, create 3 Kaggle notebooks
-- Phase 1A: Write Xeno-canto API download script (runs in Notebook 1, Internet ON)
+- **Kaggle:** Attach `birdclef-2021` dataset and run Notebook 1 (cells 1–11)
+- Verify disk usage < 2 GB and species overlap > 30 species
+- Save Notebook 1 output as `bird-xai-processed-features` dataset
+- Phase 2: Build DataModule and EfficientNet-B0 backbone (Notebook 2)
 - **Phase 4A (early gate):** Minimal CNN smoke-test must pass before full CBM work
 
 **Blockers / Open Questions:**
-- Final species list not yet determined (need to query Xeno-canto API to check available counts)
-- Window size for segmentation (3 or 5 sec?) — to be decided during preprocessing
-- How many concepts to include in bottleneck (6 defined, could expand)
-- W&B API key needs to be set as Kaggle Secret in each notebook
-- Window size for segmentation (3 or 5 sec?) — to be decided during preprocessing
-- How many concepts to include in bottleneck (6 defined, could expand)
+- BirdCLEF 2021 species coverage not yet verified (exact overlap with NIPS4Bplus TBD at runtime)
+- Window size fixed at 4 s (decision logged in trace.md)
+- 6 concepts defined — can be expanded after smoke-test
+- W&B API key needs to be set as Kaggle Secret before running Notebook 2
+
+**Input Datasets Required (Kaggle sidebar):**
+- `birdclef-2021` → competition dataset (attach via '+ Add Data')
+- `nips4b-audio-raw` → NIPS4B WAV files
+- `nips4bplus-annotations` → NIPS4Bplus CSV annotations
 
 ---
 
@@ -159,6 +168,7 @@ Audio → Log-mel spectrogram → EfficientNet-B0 → ConceptBottleneck head →
 | 2026-08-17 | Antigravity (Claude Sonnet 4.6 Thinking) | Project initialized. Created implementation plan, trace.md, memory.md. No code written yet. |
 | 2026-08-17 | Antigravity (Claude Sonnet 4.6 Thinking) | Owner made 6 edits to project brief (v2). All 3 tracking docs updated. |
 | 2026-08-18 | Antigravity (Claude Sonnet 4.6 Thinking) | Read Kaggle_Workflow_and_Coding_Guidelines.md. Full Kaggle environment integrated into all 3 tracking docs: 3-notebook structure, /kaggle/ paths, checkpointing, GPU quota rules, real-time results_summary.csv logging. Plan updated to v3. |
+| 2026-09-17 | Antigravity (Claude Sonnet 4.6 Thinking) | Implemented BirdCLEF 2021 pivot plan. Overhauled species_config.py (BirdCLEF paths, taxonomy map, new feature constants). Fully rewrote phase1_bird_xai_preprocessing.py (11 cells): removed all Xeno-canto API code, added local metadata filter + stratified split + on-the-fly log-mel+concept extraction → .npz. Updated trace.md and memory.md. |
 
 ---
 

@@ -18,7 +18,7 @@ The notebook will read short audio files directly from `/kaggle/input/birdclef-2
 > [!IMPORTANT]
 > **Action Required in Kaggle Notebook:**
 > Before running the updated notebook, you will need to attach the **BirdCLEF 2021** dataset to your notebook in Kaggle:
-> 1. Open your `bird-xai-preprocessing` notebook in Kaggle.
+> 1. Open your `bird-preprocessing` notebook in Kaggle.
 > 2. On the right-side panel, click **"+ Add Data"** (or **"Add Input"**).
 > 3. In the search box, type: `birdclef-2021` (from the competition *BirdCLEF 2021 - Birdcall Identification*).
 > 4. Click **"Add"**. It will mount at `/kaggle/input/birdclef-2021/`.
@@ -37,10 +37,8 @@ The notebook will read short audio files directly from `/kaggle/input/birdclef-2
 
 > [!NOTE]
 > 1. **Training Species Count:** BirdCLEF 2021 has 397 species. Would you prefer to train on:
->    - **(A) Targeted European Focus (Recommended):** All species that overlap with European / NIPS4Bplus species + extended European birds in BirdCLEF (~50–60 species), OR
->    - **(B) Top-N Most Common Species:** The top 50–70 most frequent species in BirdCLEF 2021 with the highest recording quality?
->    *(Defaulting to (A) ensures maximum overlap with NIPS4Bplus for faithfulness evaluation).*
-
+>    - **(A) Targeted European Focus (Recommended):** All species that overlap with European / NIPS4Bplus species + extended European birds in BirdCLEF (~50–60 species)
+we will be using A in this. 
 ---
 
 ## Proposed Changes

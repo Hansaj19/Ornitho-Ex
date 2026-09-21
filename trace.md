@@ -11,6 +11,29 @@
 
 ---
 
+## [2026-09-17] — Pivot Training Source: Xeno-canto API → BirdCLEF 2021 Dataset
+
+**Context:** The Xeno-canto REST API download pipeline caused two classes of failure:
+1. `OSError: [Errno 28] No space left on device` — even with MAX_CLIPS=100, downloading ~7,000 raw audio files exhausted Kaggle's 20 GB `/kaggle/working/` quota.
+2. API rate limits, timeouts and slow pagination added 30–60 min to each Notebook 1 run before any feature extraction began.
+
+**Decision:** Switch Notebook 1 (`bird-xai-preprocessing`) from live Xeno-canto REST API downloads to the pre-hosted **BirdCLEF 2021** Kaggle competition dataset (`kaggle.com/c/birdclef-2021`), which mounts as read-only at `/kaggle/input/birdclef-2021/`.
+
+**Species scope:** Option A (Targeted European Focus) selected — all European/NIPS4Bplus-overlapping species present in BirdCLEF 2021, plus ~20 extended European species (~70 total classes).
+
+**Changes made:**
+- `src/config/species_config.py`: Added `BIRDCLEF_DIR`, `BIRDCLEF_METADATA`, `BIRDCLEF_AUDIO_DIR` path constants; updated `SAMPLE_RATE` to 32000 Hz (native BirdCLEF rate); added `TAXONOMY_MAP_NIPS4B_TO_BIRDCLEF` dict; added `MIN_RATING=3.5`, `MAX_CLIPS_PER_SP=50`.
+- `notebooks/phase1_bird_xai_preprocessing.py`: Full overhaul — all Xeno-canto HTTP functions removed; metadata loaded from `train_metadata.csv`; filtered by `scientific_name` & `rating >= 3.5`; balanced at 50 clips/species; stratified 80/10/10 split; log-mel spectrograms + 6 acoustic concepts extracted on-the-fly and saved as `.npz`; NIPS4Bplus cutting logic preserved intact.
+
+**Impact:**
+- 0 MB of raw audio written to `/kaggle/working/` — audio stays in read-only `/kaggle/input/`.
+- Expected disk footprint of processed `.npz` files: **< 500 MB** (vs. 20+ GB of raw audio previously).
+- Eliminates all network dependency from Notebook 1.
+- Eliminates the disk quota crash.
+- Feature extraction of ~2,000 clips expected to complete in ~10–15 min.
+
+---
+
 ## [2026-08-18] — Kaggle Disk Space Exhaustion Fix
 
 **Context:** The overnight Kaggle run failed with `OSError: [Errno 28] No space left on device` during notebook export. Kaggle has a strict 20GB output limit in `/kaggle/working/`. 
