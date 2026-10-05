@@ -1,0 +1,7 @@
+model_key     , model_type, lambda, test_accuracy, test_macro_f1, concept_mae_norm, concept_mae_physical, deletion_auc_gradcam, insertion_auc_gradcam, temporal_alignment
+baseline      , baseline  ,    0.0,        0.5409,        0.455 ,                 ,                     ,               0.1041,                0.0765,             0.9667
+cbm_lambda_0.0, cbm       ,    0.0,        0.5121,        0.4213,           6.9332,              4540.06,                     ,                      ,              
+cbm_lambda_0.1, cbm       ,    0.1,        0.4506,        0.3694,           3.4643,              2186.43,                     ,                      ,              
+cbm_lambda_0.5, cbm       ,    0.5,        0.5254,        0.4302,           1.6935,              1105.18,                     ,                      ,              
+cbm_lambda_1.0, cbm       ,    1.0,        0.4579,        0.3532,           1.1236,               724.78,                     ,                      ,              
+cbm_lambda_5.0, cbm       ,    5.0,        0.1148,        0.0423,           0.3344,               212.33,                     ,                      ,              
