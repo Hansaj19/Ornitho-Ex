@@ -1,9 +1,9 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch>=2.1.0
-timm>=0.9.12
-librosa>=0.10.1
-soundfile>=0.12.1
-scipy>=1.11.0
-streamlit>=1.35.0
-matplotlib>=3.8.0
-numpy>=1.24.0
+torch
+torchvision
+timm
+librosa
+soundfile
+scipy
+matplotlib
+numpy<2.0.0
